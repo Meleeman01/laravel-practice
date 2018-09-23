@@ -64,44 +64,6 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laracasts
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-                <h1>Hello, <?php echo $name;?></h1>
-
-                <h2> list of things todo:</h2>
-                <ul>
-                @foreach ($tasks as $task) 
-                    <li>{{$task}}</li>
-                @endforeach  <!--blade syntax is bedder-->
-                </ul>
-            </div>
-
-        </div>
-
-
-
+        <h1>About Me</h1>
     </body>
 </html>
