@@ -94,7 +94,7 @@
                 <h2> list of things todo:</h2>
                 <ul>
                 @foreach ($tasks as $task) 
-                    <li>{{$task}}</li>
+                    <li>{{$task->body}}</li>
                 @endforeach  <!--blade syntax is bedder-->
                 </ul>
             </div>
