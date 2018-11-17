@@ -15,7 +15,7 @@
 
     <!-- Custom styles for this template -->
     
-    <link href="../../public/css/custom.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
   </head>
 
 

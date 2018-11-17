@@ -57,4 +57,6 @@ class PostsController extends Controller
 
     	return redirect('/');
     }
+
+    
 }
