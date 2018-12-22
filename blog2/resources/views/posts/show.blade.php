@@ -1,25 +1,26 @@
 
 
 @include('partials.header')
+
 @include('partials.nav')
-	
-	
+    
+    
 
 <div class="row">
-	<div class="col-md-8">
-		<h1>{{$post->title}}</h1>
-		<p>{{$post->body}}</p>
-		<hr>
-		<ul class="list-group">
-			@foreach($post->comments as $comment)
-				
-				<li class="list-group-item">
-					<strong>
-					{{ $comment->created_at->diffForHumans()}}:
-				    </strong>{{ $comment->body}}
-				</li>
-			@endforeach
-		</ul>
+    <div class="col-md-8">
+        <h1>{{$post->title}}</h1>
+        <p>{{$post->body}}</p>
+        <hr>
+        <ul class="list-group">
+            @foreach($post->comments as $comment)
+                
+                <li class="list-group-item">
+                    <strong>
+                    {{ $comment->created_at->diffForHumans()}}:
+                    </strong>{{ $comment->body}}
+                </li>
+            @endforeach
+        </ul>
 
         {{--Add a comment --}}
 
@@ -38,10 +39,10 @@
 </div>
 
     @include('partials.errors')
-	</div>
+    </div>
 
-	@include('partials.sidebar')
-</div>	
+    @include('partials.sidebar')
+</div>  
 
 
 

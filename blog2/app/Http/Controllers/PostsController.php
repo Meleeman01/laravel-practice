@@ -4,24 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-
+use App\Posts;
 
 class PostsController extends Controller
 {
-    //
+    public function __construct(){
+        $this->middleware('auth',['except'=>'index',
+                                   'except'=>'show']);
+    }
+
     public function index(){
-    	$posts= \App\Posts::orderBy('created_at','desc')->get();
+    	$posts= Posts::orderBy('created_at','desc')->get();
+       $archives = Posts::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+         ->groupBy('year', 'month')
+         ->orderByRaw('min(create_at) desc')
+         ->get()->toArray();
+        
 
-
-    	return view('layout',compact('posts'));
+    	return view('layout',compact('posts', 'archives'));
     }
     public function show($id){
+        $archives = Posts::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+         ->groupBy('year', 'month')
+         ->orderByRaw('min(create_at) desc')
+         ->get()->toArray();
+    	$post = Posts::find($id);
 
-    	$post = \App\Posts::find($id);
-
-    	return view('posts.show', compact('post'));
+    	return view('posts.show', compact('post', 'archives'));
     }
-
+ 
     public function create(){
     	return view('posts.create');
     }
@@ -45,13 +56,21 @@ class PostsController extends Controller
     	$this->validate(request(),[
 
     		'title'=>'required|max:25',
-    		'body'=>'required'
+    		'body'=>'required',
+            
 
     	]);
+//--------------------------------------------------------------laracasts ep 18
+    	/*Posts::create([
+            'title' => request('title'),
+            'body' => request('body'),
+            'user_id' => auth()->id()
 
-    	\App\Posts::create(request(['title','body']));
+    ]);*/
 
-    
+        auth()->user()->publish(
+            new Posts(request(['title','body']))
+        );
 
     	// And then redirect to the homepage.
 

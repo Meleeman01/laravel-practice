@@ -12,5 +12,6 @@
           <a class="p-2 text-muted" href="#">Health</a>
           <a class="p-2 text-muted" href="#">Style</a>
           <a class="p-2 text-muted" href="#">Travel</a>
+          
         </nav>
       </div>

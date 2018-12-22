@@ -3,7 +3,7 @@
   
     @include('partials.header')
 
- 
+
 
     @include('partials.nav')
 
@@ -61,7 +61,7 @@
         </div><!-- /.blog-main -->
 
         @include('partials.sidebar')
-
+        
       </div><!-- /.row -->
 
     </main><!-- /.container -->
